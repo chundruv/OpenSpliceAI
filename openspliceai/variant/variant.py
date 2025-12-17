@@ -56,10 +56,7 @@ def variant(args):
 
     # Adding annotation to the header
     header = vcf.header
-    header.add_line('##INFO=<ID=OpenSpliceAI,Number=.,Type=String,Description="OpenSpliceAI variant '
-                    'annotation. These include delta scores (DS) and delta positions (DP) for '
-                    'acceptor gain (AG), acceptor loss (AL), donor gain (DG), and donor loss (DL). '
-                    'Format: ALLELE|SYMBOL|DS_AG|DS_AL|DS_DG|DS_DL|DP_AG|DP_AL|DP_DG|DP_DL">')
+    header.add_line('##INFO=<ID=SpliceAI,Number=.,Type=String,Description="SpliceAIv1.3.2-SpliceAndDice variant annotation. These include delta scores (DS), masked delta score (DSM), delta positions (DP), and raw scores (RS) for acceptor gain (AG), acceptor loss (AL), donor gain (DG), and donor loss (DL). Additional fields include MANEselect splice sites within context window, all sites with raw score >0.5, splice change detection, frame changes, and amino acid change predictions. Format: ALLELE|SYMBOL|DSM_AG|DSM_AL|DSM_DG|DSM_DL|DS_AG|DS_AL|DS_DG|DS_DL|DP_AG|DP_AL|DP_DG|DP_DL|RS_AG|RS_AL|RS_DG|RS_DL|MANEselect Donor splice sites within context (DP,RS_REF,RS_ALT)|MANEselect Acceptor splice sites within context (DP,RS_REF,RS_ALT)|Donor Sites with Raw Score > 0.5 (DP,RS_REF,RS_ALT)|Acceptor Sites with Raw Score > 0.5 (DP,RS_REF,RS_ALT)|SPLICE_CHANGE(Donor;Acceptor)|FRAME_CHANGE(Donor;Acceptor)|AA_CHANGE(Donor;Acceptor)">')
 
     # Generating output VCF file
     print('\t[INFO] Generating output VCF file')
